@@ -1,0 +1,47 @@
+{
+  "name": "handlebars-helper-post",
+  "description": "{{foo}} helper, for doing bar and baz.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/jonschlinkert/handlebars-helper-post",
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "https://github.com/jonschlinkert"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonschlinkert/handlebars-helper-post.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/handlebars-helper-post/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jonschlinkert/handlebars-helper-post/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "index.js",
+  "dependencies": {
+    "assemble-yaml": "~0.2.0",
+    "globule": "~0.1.0",
+    "handlebars": "~1.0.12",
+    "highlight.js": "~7.3.0",
+    "lodash": "~2.2.1",
+    "marked": "~0.2.9",
+    "pretty": "~0.1.1",
+    "rainbow": "~0.2.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1",
+    "assemble": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-readme": "~0.1.0"
+  },
+  "keywords": [
+    "helper",
+    "handlebars helper",
+    "assemble",
+    "grunt"
+  ]
+}
