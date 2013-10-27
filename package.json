@@ -1,23 +1,23 @@
 {
   "name": "handlebars-helper-post",
-  "description": "{{foo}} helper, for doing bar and baz.",
+  "description": "{{post}} handlebars helper, for including a post, or a list of posts.",
   "version": "0.1.0",
-  "homepage": "https://github.com/jonschlinkert/handlebars-helper-post",
+  "homepage": "https://github.com/helpers/handlebars-helper-post",
   "author": {
     "name": "Jon Schlinkert",
     "url": "https://github.com/jonschlinkert"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jonschlinkert/handlebars-helper-post.git"
+    "url": "https://github.com/helpers/handlebars-helper-post.git"
   },
   "bugs": {
-    "url": "https://github.com/jonschlinkert/handlebars-helper-post/issues"
+    "url": "https://github.com/helpers/handlebars-helper-post/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jonschlinkert/handlebars-helper-post/blob/master/LICENSE-MIT"
+      "url": "https://github.com/helpers/handlebars-helper-post/blob/master/LICENSE-MIT"
     }
   ],
   "main": "index.js",
@@ -28,8 +28,7 @@
     "highlight.js": "~7.3.0",
     "lodash": "~2.2.1",
     "marked": "~0.2.9",
-    "pretty": "~0.1.1",
-    "rainbow": "~0.2.0"
+    "pretty": "~0.1.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

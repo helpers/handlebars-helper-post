@@ -60,6 +60,18 @@ module.exports = function(grunt) {
         src: ['test/fixtures/*.hbs'],
         dest: 'test/actual/convert_before/'
       },
+      convert_false: {
+        options: {
+          postprocess: false,
+          posts: {
+            convert: false,
+            sep: '<!-- Post -->\n',
+            cwd: 'test/fixtures/foo',
+          }
+        },
+        src: ['test/fixtures/*.hbs'],
+        dest: 'test/actual/convert_false/'
+      },
       sort_by_num: {
         options: {
           posts: {

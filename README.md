@@ -1,6 +1,6 @@
 # handlebars-helper-post [![NPM version](https://badge.fury.io/js/handlebars-helper-post.png)](http://badge.fury.io/js/handlebars-helper-post) 
 
-> {{foo}} helper, for doing bar and baz.
+> {{post}} handlebars helper, for including a post, or a list of posts.
 
 
 
@@ -14,7 +14,7 @@
 
 
 ## Contributing
-Please see the [Contributing to handlebars-helper-post](https://github.com/jonschlinkert/handlebars-helper-post/blob/master/CONTRIBUTING.md) guide for information on contributing to this project.
+Please see the [Contributing to handlebars-helper-post](https://github.com/helpers/handlebars-helper-post/blob/master/CONTRIBUTING.md) guide for information on contributing to this project.
 
 ## Author
 

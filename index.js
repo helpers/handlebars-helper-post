@@ -79,12 +79,6 @@ module.exports.register = function (Handlebars, options, params) {
     // Extend default options with options from assemble.options.posts
     // and the helper's options hash.
     options = _.extend({}, defaults, opts.posts, (options.hash || {}));
-    options.convert = String(options.convert).toLowerCase();
-
-    if(options.convert !== ('after' || 'before')) {
-      grunt.log.writeln(">> convert:".yellow, options.convert);
-      grunt.log.warn('\n"options.convert"'.bold + ' may only be defined as "before" or "after"\n'.red);
-    }
 
     /**
      * Accepts two objects (a, b),
@@ -146,7 +140,7 @@ module.exports.register = function (Handlebars, options, params) {
       // If "convert: before" is defined, then this is already HTML,
       // so return the output. Otherwise it's still markdown, so
       // convert it to HTML first, then return the result.
-      if(options.convert === 'before') {
+      if(options.convert === 'before' || options.convert === false) {
         return output;
       } else {
         return marked(output);
