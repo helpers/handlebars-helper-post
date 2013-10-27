@@ -34,6 +34,9 @@ module.exports = function(grunt) {
         assets: 'test/assets',
         data: ['test/fixtures/posts.json'],
         helpers: ['./index.js'],
+        markdown: {
+          langPrefix: 'language-'
+        },
         postprocess: pretty
       },
       pages: {
@@ -46,12 +49,23 @@ module.exports = function(grunt) {
         src: ['test/fixtures/*.hbs'],
         dest: 'test/actual/posts/'
       },
+      convert_before: {
+        options: {
+          posts: {
+            // convert: 'before',
+            sep: '<!-- Post -->\n',
+            cwd: 'test/fixtures/foo',
+          }
+        },
+        src: ['test/fixtures/*.hbs'],
+        dest: 'test/actual/convert_before/'
+      },
       sort_by_num: {
         options: {
           posts: {
             sep: '<!-- Post -->\n',
             cwd: 'test/fixtures/foo',
-            sortby: 'num'
+            sortBy: 'num'
           }
         },
         src: ['test/fixtures/foo.hbs'],
@@ -62,7 +76,7 @@ module.exports = function(grunt) {
           posts: {
             sep: '<!-- Post -->\n',
             cwd: 'test/fixtures/foo',
-            sortby: 'title'
+            sortBy: 'title'
           }
         },
         src: ['test/fixtures/foo.hbs'],
@@ -73,7 +87,7 @@ module.exports = function(grunt) {
           posts: {
             sep: '<!-- Post -->\n',
             cwd: 'test/fixtures/foo',
-            sortby: 'foo'
+            sortBy: 'foo'
           }
         },
         src: ['test/fixtures/foo.hbs'],
@@ -84,8 +98,8 @@ module.exports = function(grunt) {
           posts: {
             sep: '<!-- Post -->\n',
             cwd: 'test/fixtures/foo',
-            sortby: 'title',
-            order: 'desc'
+            sortBy: 'title',
+            sortOrder: 'foo'
           }
         },
         src: ['test/fixtures/foo.hbs'],

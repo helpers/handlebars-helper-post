@@ -9,7 +9,7 @@
     <div class="container">
 
       <!-- Post -->
-      <h1>Foo 1</h1>
+      <h1>Foo</h1>
       <p>Num: 1</p>
       <h2>Page Description</h2>
       <blockquote>
@@ -20,7 +20,7 @@
         <p>AAA Sitewide description.</p>
       </blockquote>
       <h2>Code</h2>
-      <pre><code class="lang-html">&lt;!DOCTYPE html&gt;
+      <pre><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
   &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot;&gt;
@@ -32,12 +32,29 @@
 &lt;/html&gt;</code></pre>
 
       <!-- Post -->
-      <h1>Foo</h1>
+      <h1>Content</h1>
       <p>Num: 2</p>
       <h2>Page Description</h2>
       <blockquote>
         <p>This is a blockquote</p>
       </blockquote>
+
+      <!-- Included content -->
+      <h1>Baz</h1>
+      <p>Num: 3</p>
+      <h2>Page Description</h2>
+      <blockquote>
+        <p>This is my third blog post.</p>
+      </blockquote>
+      <h2>Site Description</h2>
+      <blockquote>
+        <p>DDD Sitewide description.</p>
+      </blockquote>
+      <h2>Code</h2>
+      <pre><code class="language-less">@color: red;
+.sidebar {
+  color: @color;
+}</code></pre><!-- /Included content -->
       <h2>Site Description</h2>
       <blockquote>
         <p>BBB Sitewide description.</p>
@@ -50,7 +67,7 @@
       <p>This is a regular paragraph.</p>
 
       <!-- Post -->
-      <h1>Foo 2</h1>
+      <h1>Bar</h1>
       <p>Num: 4</p>
       <h2>Page Description</h2>
       <blockquote>
@@ -61,25 +78,25 @@
         <p>CCC Sitewide description.</p>
       </blockquote>
       <h2>Code</h2>
-      <pre><code class="lang-js">var compareFn = function (a, b) {
+      <pre><code class="language-js"><span class="keyword">var</span> compareFn = <span class="function"><span class="keyword">function</span> <span class="params">(a, b)</span> {</span>
   a = a.context[options.sortby];
   b = b.context[options.sortby];
-  var result = 0;
-  if (a === b) {
-    result = 0;
-  } else if (a &gt; b) {
-    result = 1;
-  } else {
-    result = -1;
+  <span class="keyword">var</span> result = <span class="number">0</span>;
+  <span class="keyword">if</span> (a === b) {
+    result = <span class="number">0</span>;
+  } <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) {
+    result = <span class="number">1</span>;
+  } <span class="keyword">else</span> {
+    result = -<span class="number">1</span>;
   }
-  if(options.order === &#39;desc&#39;.toLowerCase()) {
-    return result * -1;
+  <span class="keyword">if</span>(options.order === <span class="string">'desc'</span>.toLowerCase()) {
+    <span class="keyword">return</span> result * -<span class="number">1</span>;
   }
-  return result;
+  <span class="keyword">return</span> result;
 };</code></pre>
 
       <!-- Post -->
-      <h1>Foo 3</h1>
+      <h1>Baz</h1>
       <p>Num: 3</p>
       <h2>Page Description</h2>
       <blockquote>
@@ -90,7 +107,7 @@
         <p>DDD Sitewide description.</p>
       </blockquote>
       <h2>Code</h2>
-      <pre><code class="lang-less">@color: red;
+      <pre><code class="language-less">@color: red;
 .sidebar {
   color: @color;
 }</code></pre>

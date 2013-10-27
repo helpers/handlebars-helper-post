@@ -1,5 +1,5 @@
 ---
-title: Foo 2
+title: Bar
 description: This is my second blog post.
 foo: CCC <%= site.description %>
 num: 4

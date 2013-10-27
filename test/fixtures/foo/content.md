@@ -1,5 +1,5 @@
 ---
-title: Foo
+title: Content
 description: This is a blockquote
 foo: BBB <%= site.description %>
 num: 2
@@ -11,6 +11,11 @@ Num: {{num}}
 > {{description}}
 
 {{name}}
+
+<!-- Included content -->
+{{post 'baz.md'}}
+
+<!-- /Included content -->
 
 ## Site Description
 > {{foo}}

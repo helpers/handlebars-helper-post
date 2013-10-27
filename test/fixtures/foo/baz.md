@@ -1,5 +1,5 @@
 ---
-title: Foo 3
+title: Baz
 description: This is my third blog post.
 foo: DDD <%= site.description %>
 num: 3

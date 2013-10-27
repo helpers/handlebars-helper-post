@@ -18,56 +18,31 @@ var marked  = require('marked');
 var rainbow = require('rainbow');
 var yfm     = require('assemble-yaml');
 
-
-// var languages = {
-//   'js': 'javascript',
-//   'json': 'javascript'
-// };
-
-// // Rainbow
-// marked.setOptions({
-//   gfm: true,
-//   pedantic: false,
-//   sanitize: true,
-//   highlight: function (code, lang) {
-//     lang = languages[lang] != null ? languages[lang] : lang;
-//     var processedCode = null;
-//     if (typeof Rainbow !== 'undefined' && Rainbow !== null) {
-//       Rainbow.color(code, lang, function (highlighted) {
-//         return processedCode = highlighted;
-//       });
-//     }
-//     return processedCode || code;
-//   }
-// });
-
-
 // Highlight.js
-// marked.setOptions({
-//   gfm: true,
-//   tables: true,
-//   breaks: false,
-//   pedantic: false,
-//   sanitize: false,
-//   silent: false,
-//   smartLists: true,
-//   langPrefix: 'language-',
-//   highlight: function (code, lang) {
-//     var res;
-//     res = void 0;
-//     if (!lang) {
-//       return code;
-//     }
-//     if(lang === 'js') {
-//       lang = 'javascript';
-//     }
-//     try {
-//       return res = hljs.highlight(lang, code).value;
-//     } finally {
-//       return res || code;
-//     }
-//   }
-// });
+var markedOptions = {
+  gfm: true,
+  tables: true,
+  breaks: false,
+  pedantic: false,
+  sanitize: false,
+  silent: false,
+  smartLists: true,
+  langPrefix: 'lang-',
+  highlight: function (code, lang) {
+    var res = void 0;
+    if (!lang) {
+      return code;
+    }
+    if(lang === 'js') {
+      lang = 'javascript';
+    }
+    try {
+      return res = hljs.highlight(lang, code).value;
+    } finally {
+      return res || code;
+    }
+  }
+};
 
 
 // Export helpers
@@ -89,19 +64,21 @@ module.exports.register = function (Handlebars, options, params) {
    * @return {[type]}         [description]
    */
   Handlebars.registerHelper('post', function (src, options, compare_fn) {
-    var hash = options.hash || {};
 
     var defaults = {
       cwd: '',
       convert: 'after',
-      sortby: 'title',
-      order: 'asc',
+      sortBy: 'title',
+      sortOrder: 'asc',
       sep: '<!-- Post -->\n',
       glob: {} // see: https://github.com/cowboy/node-globule for all options
     };
 
+    marked.setOptions(_.extend({}, markedOptions, opts.markdown));
 
-    options = _.extend({}, defaults, opts.posts, hash);
+    // Extend default options with options from assemble.options.posts
+    // and the helper's options hash.
+    options = _.extend({}, defaults, opts.posts, (options.hash || {}));
     options.convert = String(options.convert).toLowerCase();
 
     if(options.convert !== ('after' || 'before')) {
@@ -116,8 +93,9 @@ module.exports.register = function (Handlebars, options, params) {
      * @return {Number} returns 1 if (a >= b), otherwise -1
      */
     var compareFn = function (a, b) {
-      a = a.context[options.sortby];
-      b = b.context[options.sortby];
+      // Sort by a property in the context
+      a = a.context[options.sortBy];
+      b = b.context[options.sortBy];
 
       var result = 0;
       if (a === b) {
@@ -127,15 +105,16 @@ module.exports.register = function (Handlebars, options, params) {
       } else {
         result = -1;
       }
-      if(options.order === 'desc'.toLowerCase()) {
+      // Sort order
+      if(options.sortOrder === 'desc'.toLowerCase()) {
         return result * -1;
       }
       return result;
     };
 
 
-    compare_fn = ((compareFn || compare_fn) || options.compare);
     var index = 0;
+    compare_fn = ((compareFn || compare_fn) || options.compare);
 
     // Join path to 'cwd' if defined in the helper's options
     var cwd = path.join.bind(null, options.cwd);
@@ -161,21 +140,17 @@ module.exports.register = function (Handlebars, options, params) {
         obj.content = obj.content;
       }
 
-      // Compile any Handlebars templates in the markdown content.
+      // Compile any Handlebars templates in the content.
       var output = Handlebars.compile(obj.content)(obj.context);
 
       // If "convert: before" is defined, then this is already HTML,
-      // So just return the output now. Otherwise it's still markdown,
-      // so convert it to HTML first, then return the result.
+      // so return the output. Otherwise it's still markdown, so
+      // convert it to HTML first, then return the result.
       if(options.convert === 'before') {
         return output;
       } else {
         return marked(output);
       }
-
-
-    grunt.log.ok('target'.yellow, grunt.task.current.data.options.posts);
-
 
     }).join(options.sep);
     return new Handlebars.SafeString(html);

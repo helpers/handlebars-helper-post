@@ -1,5 +1,5 @@
 ---
-title: Foo 1
+title: Foo
 description: This is my first blog post.
 foo: AAA <%= site.description %>
 num: 1
