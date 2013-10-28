@@ -1,7 +1,8 @@
 ## Helper Options
-Several options depend on properties in YAML front matter to exist for them to be useful. If YAML front matter doesn't exist the helper should still process the files, but don't expect all of the options to work without it.
+Several options depend on properties in YAML front matter to exist for the options to be useful or to work at all. If YAML front matter doesn't exist, the helper should still process the files, but don't expect all of the options to work entirely without it.
 
 Please [report any errors](https://github.com/helpers/handlebars-helper-post/issues/new), thanks!
+
 
 ### convert
 Type: `String|Boolean` (optional)
@@ -17,7 +18,7 @@ Defines when, or if, the helper should convert the included markdown to HTML. Op
 Type: `String` (optional)
 Default value: `undefined`
 
-The current working directory, or "cwd", for paths defined in the helper. So instead of writing out `{{{%= shortname %} 'my/book/chapters/*.hbs'}}`, just define `cwd: "my/book"` and now any paths defined in the helper will use the `cwd` as a base, like this: `{{{%= shortname %} 'chapters/*.hbs'}}`
+The current working directory for paths defined in the helper. So instead of writing out `{{{%= shortname %} 'my/book/chapters/*.hbs'}}`, just define `cwd: "my/book"` and now any paths defined in the helper will use the `cwd` as a base, like this: `{{{%= shortname %} 'chapters/*.hbs'}}`
 
 ### sep
 Type: `String`
