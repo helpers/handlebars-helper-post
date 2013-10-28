@@ -68,7 +68,7 @@ module.exports.register = function (Handlebars, options, params) {
     var defaults = {
       cwd: '',
       convert: 'after',
-      sortBy: 'title',
+      sortBy: 'basename',
       sortOrder: 'asc',
       sep: '<!-- Post -->\n',
       glob: {} // see: https://github.com/cowboy/node-globule for all options
@@ -106,7 +106,6 @@ module.exports.register = function (Handlebars, options, params) {
       return result;
     };
 
-
     var index = 0;
     compare_fn = ((compareFn || compare_fn) || options.compare);
 
@@ -127,6 +126,8 @@ module.exports.register = function (Handlebars, options, params) {
         content: content
       };
     }).sort(compare_fn).map(function (obj) {
+
+      obj.context.basename = path.basename(obj.path, path.extname(obj.path));
 
       if(options.convert === 'before') {
         obj.content = marked(obj.content);

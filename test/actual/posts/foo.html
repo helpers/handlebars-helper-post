@@ -111,6 +111,35 @@
     {{&gt; body }}
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
+
+      <!-- Post -->
+      <h1>Foo</h1>
+      <p>Num: 1</p>
+      <h2>Page Description</h2>
+      <blockquote>
+        <p>This is my first blog post.</p>
+      </blockquote>
+      <h2>Site Description</h2>
+      <blockquote>
+        <p>AAA Sitewide description.</p>
+      </blockquote>
+      <h2>Code</h2>
+      <pre><code class="language-js"><span class="keyword">var</span> compareFn = <span class="function"><span class="keyword">function</span> <span class="params">(a, b)</span> {</span>
+  a = a.context[options.sortby];
+  b = b.context[options.sortby];
+  <span class="keyword">var</span> result = <span class="number">0</span>;
+  <span class="keyword">if</span> (a === b) {
+    result = <span class="number">0</span>;
+  } <span class="keyword">else</span> <span class="keyword">if</span> (a &gt; b) {
+    result = <span class="number">1</span>;
+  } <span class="keyword">else</span> {
+    result = -<span class="number">1</span>;
+  }
+  <span class="keyword">if</span>(options.order === <span class="string">'desc'</span>.toLowerCase()) {
+    <span class="keyword">return</span> result * -<span class="number">1</span>;
+  }
+  <span class="keyword">return</span> result;
+};</code></pre>
     </div>
   </body>
 </html>

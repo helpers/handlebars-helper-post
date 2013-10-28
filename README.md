@@ -27,9 +27,24 @@ With that completed, you may now use the `{{post}}` helper in your templates:
 {{post 'foo'}}
 ```
 
+Please [report any bugs or feature requests](https://github.com/helpers/handlebars-helper-post/issues/new), thanks!
+
 
 ## Options
 ### Helper Options
+Several options depend on properties in YAML front matter to exist for them to be useful. If YAML front matter doesn't exist the helper should still process the files, but don't expect all of the options to work without it.
+
+Please [report any errors](https://github.com/helpers/handlebars-helper-post/issues/new), thanks!
+
+#### convert
+Type: `String|Boolean` (optional)
+Default value: `after`
+
+Defines when, or if, the helper should convert the included markdown to HTML. Options are:
+
+* `after` (default): Content will be processed with marked.js **after templates have been compiled** with Handlebars.
+* `before` (default): Content will be processed with marked.js **before templates are compiled** with Handlebars.
+* `false`: Content will not be processed with marked.js.
 
 #### cwd
 Type: `String` (optional)
@@ -47,10 +62,22 @@ The separator to append after each inlined file.
 Type: `Function`
 Default value: `compareFn`
 
-Compare function for sorting the post files.
+Compare function for sorting the included files.
+
+#### sortBy
+Type: `String`
+Default value: `title`
+
+The property to use for sorting the included files. By default, included files are sorted alphabetically by `title`.
+
+#### sortOrder
+Type: `String`
+Default value: `asc`
+
+Order in which to sort the included files. Options are `asc` (default) and `desc`.
 
 
-### Defining options
+### Specifying options
 > Options can be defined in either of the following ways:
 
 #### hash options
@@ -209,19 +236,30 @@ Now you can define paths in the templates like this:
 ## Contributing
 Please see the [Contributing to Assemble](http://assemble.io/contributing) guide for information on contributing to this project.
 
+## Related Projects and Links
+A listing of each plugin and the current version included in this package is listed below.
+   
++ [grunt-init-helper-mod](https://github.com/helpers/grunt-init-helper-mod): Grunt init template for creating a new helper module.  
++ [handlebars-helper-aggregate](https://github.com/helpers/handlebars-helper-aggregate): `{{aggregate}}` handlebars helper. inlines content from multiple files optionally using wildcard (globbing/minimatch) patterns. uses YAML front matter as context for each file. optionally pass in a sorting function.  
++ [handlebars-helper-compose](https://github.com/helpers/handlebars-helper-compose): `{{compose}}` handlebars helper. Similar to {{aggregate}}, but this is a block expression helper that inlines content from multiple files differently, extracting YAML front matter to pass to context for each file. Optionally use wildcard (globbing/minimatch) patterns. Accepts compare function as 3rd parameter for sorting inlined files.  
++ [handlebars-helper-condense](https://github.com/helpers/handlebars-helper-condense): Remove extra newlines from HTML content.  
++ [handlebars-helper-jade](https://github.com/helpers/handlebars-helper-jade): `{{jade}}` handlebars helper, for converting basic Jade templates to HTML.   
++ [handlebars-helper-lorem](https://github.com/helpers/handlebars-helper-lorem): `{{lorem}}` handlebars helper, for generating lorem lorem placeholder text.  
++ [handlebars-helper-moment](https://github.com/helpers/handlebars-helper-moment): `{{moment}}` handlebars helper. Combines the powers of Assemble, Handlebars.js and Moment.js into a great helper to master time.  
++ [handlebars-helper-partials](https://github.com/helpers/handlebars-helper-partials): Handlebars helper for including partials, with improvements over native partial handling, such as file globbing and the ability to override context.  
++ [handlebars-helper-post](https://github.com/helpers/handlebars-helper-post): `{{post}}` handlebars helper, for including a post, or a list of posts.  
++ [handlebars-helper-prettify](https://github.com/helpers/handlebars-helper-prettify): `{{prettify}}` handlebars helper, for formatting ("beautifying") HTML, CSS and JavaScript.  
++ [handlebars-helper-repeat](https://github.com/helpers/handlebars-helper-repeat): `{{repeat}}` handlebars helper, for duplicating a block of content n times.  
++ [handlebars-helper-slugify](https://github.com/helpers/handlebars-helper-slugify): Convert strings into URL slugs.             
+
+To update this list, from the root of the project run `node docs/repos && grunt`.
+
+
+
+
 ## Author
 + [github.com/jonschlinkert](https://github.com/jonschlinkert)
 + [twitter.com/jonschlinkert](http://twitter.com/jonschlinkert)
-
-## Related Projects and Links
-+ [handlebars-helpers](https://github.com/assemble/handlebars-helpers)
-+ [helpers](https://github.com/helpers/): some great handlebars helpers that we decided not to include in the [handlebars-helpers](https://github.com/assemble/handlebars-helpers) project, most often this decision is due to either the size of the code footprint, the helper wasn't generic enough, or there is a potential variable name conflict that we'd like to avoid..
-+ [handlebars-helper-aggregate](https://github.com/assemble/handlebars-helper-aggregate): `{{aggregate}}` handlebars helper. inlines content from multiple files optionally using wildcard (globbing/minimatch) patterns. uses YAML front matter as context for each file. optionally pass in a sorting function.
-+ [handlebars-helper-compose](https://github.com/assemble/handlebars-helper-compose): `{{compose}}` handlebars helper. Similar to `{{aggregate}}`, but this is a block expression helper that inlines content from multiple files differently, extracting the YAML front matter from each file to use as context. Optionally use wildcard (globbing/minimatch) patterns. Accepts compare function as 3rd parameter for sorting inlined files.
-+ [handlebars-helper-moment](https://github.com/assemble/handlebars-helper-moment): `{{moment}}` handlebars helper. Combines the powers of Assemble, Handlebars.js and Moment.js into a great helper to master time.
-+ [handlebars-helper-lorem](https://github.com/assemble/handlebars-helper-lorem): `{{lorem}}` handlebars helper, for generating lorem lorem placeholder text.
-+ [handlebars-helper-prettify](https://github.com/assemble/handlebars-helper-prettify): `{{prettify}}` handlebars helper, for formatting ("beautifying") HTML, CSS and JavaScript.
-+ [handlebars-helper-repeat](https://github.com/assemble/handlebars-helper-repeat): `{{repeat}}` handlebars helper, for duplicating a block of content n times.
 
 ## License
 Copyright (c) 2013 Jon Schlinkert, contributors.

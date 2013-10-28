@@ -72,6 +72,17 @@ module.exports = function(grunt) {
         src: ['test/fixtures/*.hbs'],
         dest: 'test/actual/convert_false/'
       },
+      sort_by_basename: {
+        options: {
+          posts: {
+            sep: '<!-- Post -->\n',
+            cwd: 'test/fixtures/foo',
+            sortBy: 'basename' // this is default anyway
+          }
+        },
+        src: ['test/fixtures/foo.hbs'],
+        dest: 'test/actual/sort_by_basename/'
+      },
       sort_by_num: {
         options: {
           posts: {
@@ -119,6 +130,30 @@ module.exports = function(grunt) {
       }
     },
 
+    /**
+     * Pull down a list of repos from Github, for use
+     * in the "Related repos" section of the README.
+     */
+    repos: {
+      helpers: {
+        options: {
+          path: '/orgs/helpers/'
+        },
+        files: {
+          'docs/repos.json': ['repos?page=1&per_page=100']
+        }
+      }
+    },
+
+    /**
+     * Extend context for templates
+     * with repos.json
+     */
+    readme: {
+      options: {
+        metadata: ['docs/repos.json']
+      }
+    },
 
     /**
      * Before generating any new files,
