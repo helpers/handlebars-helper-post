@@ -1,7 +1,7 @@
 {
   "name": "handlebars-helper-post",
   "description": "{{post}} handlebars helper, for including a post, or a list of posts.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/helpers/handlebars-helper-post",
   "author": {
     "name": "Jon Schlinkert",
