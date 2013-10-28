@@ -18,31 +18,6 @@ var marked  = require('marked');
 var rainbow = require('rainbow');
 var yfm     = require('assemble-yaml');
 
-// Highlight.js
-var markedOptions = {
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: false,
-  silent: false,
-  smartLists: true,
-  langPrefix: 'lang-',
-  highlight: function (code, lang) {
-    var res = void 0;
-    if (!lang) {
-      return code;
-    }
-    if(lang === 'js') {
-      lang = 'javascript';
-    }
-    try {
-      return res = hljs.highlight(lang, code).value;
-    } finally {
-      return res || code;
-    }
-  }
-};
 
 
 // Export helpers
@@ -65,6 +40,9 @@ module.exports.register = function (Handlebars, options, params) {
    */
   Handlebars.registerHelper('post', function (src, options, compare_fn) {
 
+    options = options || {};
+    options.hash = options.hash || {};
+
     var defaults = {
       cwd: '',
       convert: 'after',
@@ -78,7 +56,8 @@ module.exports.register = function (Handlebars, options, params) {
 
     // Extend default options with options from assemble.options.posts
     // and the helper's options hash.
-    options = _.extend({}, defaults, opts.posts, options, (options.hash || {}));
+    options = _.extend({}, defaults, opts.posts, options, options.hash);
+    grunt.verbose.ok("options:".yellow, options);
 
     /**
      * Accepts two objects (a, b),
@@ -111,7 +90,7 @@ module.exports.register = function (Handlebars, options, params) {
 
     // Join path to 'cwd' if defined in the helper's options
     var cwd = path.join.bind(null, options.cwd);
-    // grunt.log.ok("options:".yellow, options);
+    grunt.verbose.ok("options:".yellow, options);
 
     var html = glob.find(cwd(src), options.glob).map(function (filepath) {
       var localContext = yfm.extract(filepath).context;
@@ -128,6 +107,7 @@ module.exports.register = function (Handlebars, options, params) {
     }).sort(compare_fn).map(function (obj) {
 
       obj.context.basename = path.basename(obj.path, path.extname(obj.path));
+      grunt.verbose.ok("obj.context:".yellow, obj.context);
 
       if(options.convert === 'before') {
         obj.content = marked(obj.content);
@@ -150,6 +130,33 @@ module.exports.register = function (Handlebars, options, params) {
     }).join(options.sep);
     return new Handlebars.SafeString(html);
   });
+
+
+  // Highlight.js
+  var markedOptions = {
+    gfm: true,
+    tables: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: false,
+    silent: false,
+    smartLists: true,
+    langPrefix: 'lang-',
+    highlight: function (code, lang) {
+      var res = void 0;
+      if (!lang) {
+        return code;
+      }
+      if(lang === 'js') {
+        lang = 'javascript';
+      }
+      try {
+        return res = hljs.highlight(lang, code).value;
+      } finally {
+        return res || code;
+      }
+    }
+  };
 
 
   /**

@@ -1,13 +1,16 @@
 {
   "docs": {
+    "cwd": "test/fixtures/foo",
     "sep": "<!-- Document -->\n",
     "sortBy": "num"
   },
   "chapters": {
+    "cwd": "test/fixtures/foo",
     "sep": "<!-- Chapter -->\n",
     "sortBy": "title"
   },
   "posts": {
+    "cwd": "test/fixtures/foo",
     "sep": "<!-- Post -->\n",
     "sortBy": "foo"
   }
