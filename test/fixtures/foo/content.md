@@ -7,6 +7,8 @@ num: 2
 # {{title}}
 Num: {{num}}
 
+{{> alert alert.default }}
+
 ## Page Description
 > {{description}}
 
@@ -31,4 +33,3 @@ then that is what's happening.
 * bullet three
 
 This is a regular paragraph.
-

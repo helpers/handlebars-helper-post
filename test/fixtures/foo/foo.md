@@ -11,6 +11,7 @@ Num: {{num}}
 
 > {{description}}
 
+{{> alert alert.danger }}
 
 ## Site Description
 

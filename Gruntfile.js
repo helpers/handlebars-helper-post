@@ -30,12 +30,14 @@ module.exports = function(grunt) {
     assemble: {
       options: {
         site: '<%= site %>',
-        flatten: true,
         assets: 'test/assets',
-        helpers: ['./index.js'],
+        data: ['test/fixtures/data/*.json'],
+        helpers: ['./index.js', 'test/fixtures/helpers/*.js'],
+        partials: ['test/fixtures/includes/*.hbs'],
         markdown: {
           langPrefix: 'language-'
         },
+        flatten: true,
         postprocess: pretty
       },
       pages: {
@@ -154,6 +156,7 @@ module.exports = function(grunt) {
       }
     },
 
+
     /**
      * Pull down a list of repos from Github, for use
      * in the "Related repos" section of the README.
@@ -163,11 +166,11 @@ module.exports = function(grunt) {
         options: {
           path: '/orgs/helpers/'
         },
-        files: {
-          'docs/repos.json': ['repos?page=1&per_page=100']
-        }
+        src: ['repos?page=1&per_page=100'],
+        dest: 'docs/repos.json'
       }
     },
+
 
     /**
      * Extend context for templates
@@ -175,7 +178,7 @@ module.exports = function(grunt) {
      */
     readme: {
       options: {
-        metadata: ['docs/repos.json']
+        metadata: ['<%= repos.helpers.dest %>']
       }
     },
 

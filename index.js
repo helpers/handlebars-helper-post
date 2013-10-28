@@ -23,11 +23,10 @@ module.exports.register = function (Handlebars, options, params) {
 
   'use strict';
 
-  var opts = options || {};
-  params = params || {};
-
+  var opts     = options;
   var grunt    = params.grunt;
   var assemble = params.assemble;
+
 
   /**
    * {{post}}
@@ -55,7 +54,7 @@ module.exports.register = function (Handlebars, options, params) {
     // Extend default options with options from assemble.options.posts
     // and the helper's options hash.
     options = _.extend({}, defaults, opts.posts, options, options.hash);
-    grunt.verbose.ok("options:".yellow, options);
+    grunt.log.ok("options:".yellow, options);
 
     /**
      * Accepts two objects (a, b),
