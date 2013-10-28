@@ -21,3 +21,5 @@ With that completed, you may now use the `{{{%= shortname %}}}` helper in your t
 ```handlebars
 {{{%= shortname %} 'foo'}}
 ```
+
+Please [report any bugs or feature requests](https://github.com/helpers/handlebars-helper-post/issues/new), thanks!

@@ -1,4 +1,17 @@
 ## Helper Options
+Several options depend on properties in YAML front matter to exist for them to be useful. If YAML front matter doesn't exist the helper should still process the files, but don't expect all of the options to work without it.
+
+Please [report any errors](https://github.com/helpers/handlebars-helper-post/issues/new), thanks!
+
+### convert
+Type: `String|Boolean` (optional)
+Default value: `after`
+
+Defines when, or if, the helper should convert the included markdown to HTML. Options are:
+
+* `after` (default): Content will be processed with marked.js **after templates have been compiled** with Handlebars.
+* `before` (default): Content will be processed with marked.js **before templates are compiled** with Handlebars.
+* `false`: Content will not be processed with marked.js.
 
 ### cwd
 Type: `String` (optional)
@@ -16,10 +29,22 @@ The separator to append after each inlined file.
 Type: `Function`
 Default value: `compareFn`
 
-Compare function for sorting the {%= shortname %} files.
+Compare function for sorting the included files.
+
+### sortBy
+Type: `String`
+Default value: `title`
+
+The property to use for sorting the included files. By default, included files are sorted alphabetically by `title`.
+
+### sortOrder
+Type: `String`
+Default value: `asc`
+
+Order in which to sort the included files. Options are `asc` (default) and `desc`.
 
 
-## Defining options
+## Specifying options
 > Options can be defined in either of the following ways:
 
 ### hash options

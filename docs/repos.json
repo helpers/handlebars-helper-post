@@ -1,0 +1,134 @@
+{
+  "repos": [
+    {
+      "name": "frep",
+      "description": "A find and replace utility. Modify strings by passing an array of RegExp or string replacement patterns",
+      "url": "https://github.com/helpers/frep"
+    },
+    {
+      "name": "fs-utils",
+      "description": "File utils from Grunt.js. This is temporary, we'll switch to grunt-file when it's published.",
+      "url": "https://github.com/helpers/fs-utils"
+    },
+    {
+      "name": "glob-utils",
+      "description": "Globbing utilities for Grunt.js and node.js projects.",
+      "url": "https://github.com/helpers/glob-utils"
+    },
+    {
+      "name": "grunt-init-helper-mod",
+      "description": "Grunt init template for creating a new helper module.",
+      "url": "https://github.com/helpers/grunt-init-helper-mod"
+    },
+    {
+      "name": "handlebars-helper-aggregate",
+      "description": "{{aggregate}} handlebars helper. inlines content from multiple files optionally using wildcard (globbing/minimatch) patterns. uses YAML front matter as context for each file. optionally pass in a sorting function.",
+      "url": "https://github.com/helpers/handlebars-helper-aggregate"
+    },
+    {
+      "name": "handlebars-helper-compose",
+      "description": "{{compose}} handlebars helper. Similar to {{aggregate}}, but this is a block expression helper that inlines content from multiple files differently, extracting YAML front matter to pass to context for each file. Optionally use wildcard (globbing/minimatch) patterns. Accepts compare function as 3rd parameter for sorting inlined files.",
+      "url": "https://github.com/helpers/handlebars-helper-compose"
+    },
+    {
+      "name": "handlebars-helper-condense",
+      "description": "Remove extra newlines from HTML content.",
+      "url": "https://github.com/helpers/handlebars-helper-condense"
+    },
+    {
+      "name": "handlebars-helper-jade",
+      "description": "{{jade}} handlebars helper, for converting basic Jade templates to HTML. ",
+      "url": "https://github.com/helpers/handlebars-helper-jade"
+    },
+    {
+      "name": "handlebars-helper-lorem",
+      "description": "{{lorem}} handlebars helper, for generating lorem lorem placeholder text.",
+      "url": "https://github.com/helpers/handlebars-helper-lorem"
+    },
+    {
+      "name": "handlebars-helper-moment",
+      "description": "{{moment}} handlebars helper. Combines the powers of Assemble, Handlebars.js and Moment.js into a great helper to master time.",
+      "url": "https://github.com/helpers/handlebars-helper-moment"
+    },
+    {
+      "name": "handlebars-helper-partials",
+      "description": "Handlebars helper for including partials, with improvements over native partial handling, such as file globbing and the ability to override context.",
+      "url": "https://github.com/helpers/handlebars-helper-partials"
+    },
+    {
+      "name": "handlebars-helper-post",
+      "description": "{{post}} handlebars helper, for including a post, or a list of posts.",
+      "url": "https://github.com/helpers/handlebars-helper-post"
+    },
+    {
+      "name": "handlebars-helper-prettify",
+      "description": "{{prettify}} handlebars helper, for formatting (\"beautifying\") HTML, CSS and JavaScript.",
+      "url": "https://github.com/helpers/handlebars-helper-prettify"
+    },
+    {
+      "name": "handlebars-helper-repeat",
+      "description": "{{repeat}} handlebars helper, for duplicating a block of content n times.",
+      "url": "https://github.com/helpers/handlebars-helper-repeat"
+    },
+    {
+      "name": "handlebars-helper-slugify",
+      "description": "Convert strings into URL slugs.",
+      "url": "https://github.com/helpers/handlebars-helper-slugify"
+    },
+    {
+      "name": "logger",
+      "description": "Logging utilities for Node.js projects.",
+      "url": "https://github.com/helpers/logger"
+    },
+    {
+      "name": "matchkeys",
+      "description": "Return an array of resolved filepaths for specified npm module dependencies. Minimatch patterns can be used.",
+      "url": "https://github.com/helpers/matchkeys"
+    },
+    {
+      "name": "meta",
+      "description": "General planning around helpers. Also the place to make requests and suggestions.",
+      "url": "https://github.com/helpers/meta"
+    },
+    {
+      "name": "node-name",
+      "description": "Basic utility methods for transforming and handling file paths.",
+      "url": "https://github.com/helpers/node-name"
+    },
+    {
+      "name": "sort-object",
+      "description": "Sort the keys in an object.",
+      "url": "https://github.com/helpers/sort-object"
+    },
+    {
+      "name": "strip-yfm",
+      "description": "Strip YAML front matter from files.",
+      "url": "https://github.com/helpers/strip-yfm"
+    },
+    {
+      "name": "utils",
+      "description": "Library of javascript utils",
+      "url": "https://github.com/helpers/utils"
+    },
+    {
+      "name": "utils-compare",
+      "description": "Utility compare function, accepts two objects (a,b) and returns 1 if a >= b otherwise -1.",
+      "url": "https://github.com/helpers/utils-compare"
+    },
+    {
+      "name": "utils-concat-array",
+      "description": "Takes a string and an array of strings and concatenates the first string to each string in the array.",
+      "url": "https://github.com/helpers/utils-concat-array"
+    },
+    {
+      "name": "utils-update",
+      "description": "Update the properties on an object with the properties from another object.",
+      "url": "https://github.com/helpers/utils-update"
+    },
+    {
+      "name": "yfm",
+      "description": "Helpers and examples for extracting, parsing, and passing context from YAML front matter into your templates. Useful if you need custom programming beyond what Assemble offers by default.",
+      "url": "https://github.com/helpers/yfm"
+    }
+  ]
+}
