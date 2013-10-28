@@ -15,7 +15,6 @@ var _       = require('lodash');
 var glob    = require('globule');
 var hljs    = require('highlight.js');
 var marked  = require('marked');
-var rainbow = require('rainbow');
 var yfm     = require('assemble-yaml');
 
 
