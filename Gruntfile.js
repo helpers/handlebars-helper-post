@@ -32,7 +32,6 @@ module.exports = function(grunt) {
         site: '<%= site %>',
         flatten: true,
         assets: 'test/assets',
-        data: ['test/fixtures/posts.json'],
         helpers: ['./index.js'],
         markdown: {
           langPrefix: 'language-'
@@ -127,6 +126,40 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/foo.hbs'],
         dest: 'test/actual/reverse_order/'
+      },
+
+      // The following targets all use the same data file,
+      // which could instead be defined once at the task-level,
+      // but it's done this way for purposes of example.
+      json_opts_posts: {
+        options: {
+          data: ['test/fixtures/helperOptions.json'],
+          posts: {
+            cwd: 'test/fixtures/foo'
+          }
+        },
+        src: ['test/fixtures/opts/posts.hbs'],
+        dest: 'test/actual/json_opts/'
+      },
+      json_opts_docs: {
+        options: {
+          data: ['test/fixtures/helperOptions.json'],
+          posts: {
+            cwd: 'test/fixtures/foo'
+          }
+        },
+        src: ['test/fixtures/opts/docs.hbs'],
+        dest: 'test/actual/json_opts/'
+      },
+      json_opts_chapters: {
+        options: {
+          data: ['test/fixtures/helperOptions.json'],
+          posts: {
+            cwd: 'test/fixtures/foo'
+          }
+        },
+        src: ['test/fixtures/opts/chapters.hbs'],
+        dest: 'test/actual/json_opts/'
       }
     },
 

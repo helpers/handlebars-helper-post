@@ -78,7 +78,7 @@ module.exports.register = function (Handlebars, options, params) {
 
     // Extend default options with options from assemble.options.posts
     // and the helper's options hash.
-    options = _.extend({}, defaults, opts.posts, (options.hash || {}));
+    options = _.extend({}, defaults, opts.posts, options, (options.hash || {}));
 
     /**
      * Accepts two objects (a, b),

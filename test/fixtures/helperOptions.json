@@ -1,0 +1,14 @@
+{
+  "docs": {
+    "sep": "<!-- Document -->\n",
+    "sortBy": "num"
+  },
+  "chapters": {
+    "sep": "<!-- Chapter -->\n",
+    "sortBy": "title"
+  },
+  "posts": {
+    "sep": "<!-- Post -->\n",
+    "sortBy": "foo"
+  }
+}

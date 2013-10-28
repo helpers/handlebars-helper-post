@@ -66,9 +66,9 @@ Compare function for sorting the included files.
 
 #### sortBy
 Type: `String`
-Default value: `title`
+Default value: `basename`
 
-The property to use for sorting the included files. By default, included files are sorted alphabetically by `title`.
+The property to use for sorting the included files. By default, included files are sorted alphabetically by the `basename` of the file.
 
 #### sortOrder
 Type: `String`
@@ -76,17 +76,26 @@ Default value: `asc`
 
 Order in which to sort the included files. Options are `asc` (default) and `desc`.
 
+#### glob
+Type: `Object`
+Default value: `undefined`
 
-### Specifying options
-> Options can be defined in either of the following ways:
+Options to pass to [globule](https://github.com/cowboy/node-globule), which is the library used to enable minimatch/wildcard patterns to be used for specifying files to include. Please visit the [globule](https://github.com/cowboy/node-globule) project to see all available options.
+
+
+### Setting options
+> Options can be defined in any of the following ways:
 
 #### hash options
 Set options as hash arguments directly on the helper expressions themselves:
 
 ```handlebars
+// Append a separator to the content of each included file
 {{post 'my/book/chapters/*.hbs' sep="<!-- Chapter -->"}}
-```
 
+// Override the cwd defined in the task options
+{{post 'my/book/chapters/*.hbs' cwd="./"}}
+```
 Note that **Options defined in the hash always win**!
 
 
@@ -104,6 +113,48 @@ assemble: {
   }
 }
 ```
+
+#### JSON/YAML
+> If you use Grunt and [Assemble](http://assemble.io), you can pass options to `assemble` from a JSON or YAML data file
+
+This option is really useful if you expect to have lots of options defined, or different "options groups" that you want to reuse as needed.
+
+```js
+assemble: {
+  options: {
+    data: ['path/to/post.json']
+  }
+}
+```
+Then inside `foo.json` we might define something like:
+
+```json
+{
+  "docs": {
+    "sep": "<!-- Document -->\n",
+    "cwd": "content/docs",
+    "sortBy": "num"
+  },
+  "chapters": {
+    "sep": "<!-- Chapter -->\n",
+    "cwd": "content/chapters",
+    "sortBy": "title"
+  },
+  "posts": {
+    "sep": "<!-- Post -->\n",
+    "cwd": "content/posts",
+    "sortBy": "foo"
+  }
+}
+```
+Then use in templates like this:
+
+```handlebars
+{{post foo.docs}}
+{{post foo.chapters}}
+{{post foo.posts}}
+```
+
 
 
 ## Usage Examples
