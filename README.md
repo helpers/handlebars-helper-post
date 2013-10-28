@@ -3,7 +3,6 @@
 > {{post}} handlebars helper, for including a post, or a list of posts.
 
 ## Quickstart
-### Quickstart
 Install the helper with: `npm install handlebars-helper-post`
 
 ### Usage with Assemble
@@ -158,8 +157,6 @@ Then use in templates like this:
 
 
 ## Usage Examples
-### Examples
-
 #### Example config with [Assemble](http://assemble.io)
 
 In your project's Gruntfile, options for the `{{post}}` helper can be defined in the Assemble task options:

@@ -1,5 +1,3 @@
-## Examples
-
 ### Example config with [Assemble](http://assemble.io)
 
 In your project's Gruntfile, options for the `{{{%= shortname %}}}` helper can be defined in the Assemble task options:

@@ -1,4 +1,3 @@
-## Quickstart
 Install the helper with: `npm install {%= name %}`
 
 ## Usage with Assemble

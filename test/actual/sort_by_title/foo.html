@@ -62,7 +62,9 @@
         <p>This is a blockquote</p>
       </blockquote>
 
-      <!-- Included content -->
+      <!-- Nested-included content -->
+      This content won&#39;t be included if the <code>cwd</code> is set directly on the options of the helper, or on the hash options, but not on this instance. In other words, this particular instance below won&#39;t be using the <code>cwd</code>
+      that was set on the other instances. Thus, if you don&#39;t see the content defined by <code>{{post &#39;baz.md&#39;}}</code> below, then that is what&#39;s happening.
       <h1>Baz</h1>
       <p>Num: 3</p>
       <h2>Page Description</h2>
@@ -77,7 +79,7 @@
       <pre><code class="language-less">@color: red;
 .sidebar {
   color: @color;
-}</code></pre><!-- /Included content -->
+}</code></pre><!-- /Nested-included content -->
       <h2>Site Description</h2>
       <blockquote>
         <p>BBB Sitewide description.</p>
