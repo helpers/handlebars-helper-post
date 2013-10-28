@@ -19,7 +19,6 @@ var rainbow = require('rainbow');
 var yfm     = require('assemble-yaml');
 
 
-
 // Export helpers
 module.exports.register = function (Handlebars, options, params) {
 
@@ -109,8 +108,14 @@ module.exports.register = function (Handlebars, options, params) {
       obj.context.basename = path.basename(obj.path, path.extname(obj.path));
       grunt.verbose.ok("obj.context:".yellow, obj.context);
 
+      var baz = bar.map(function(sub) {
+        return sub.split('\'').join('zzz');
+      }).join('');
+
+      console.log(baz);
+
       if(options.convert === 'before') {
-        obj.content = marked(obj.content);
+        obj.content = marked(obj.content); // .replace(/&#39;/g, '\'');
       } else {
         obj.content = obj.content;
       }
