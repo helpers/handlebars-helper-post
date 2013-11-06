@@ -1,6 +1,6 @@
 {{#each pages}}
   {{#isnt this.basename "index"}}
-    {{#include}}
+    {{#process}}
       <!-- page -->
       <section class="component">
         <h4>{{{data.title}}} <a href="{{relative ../../../page.dest this.dest}}"> <small class="pull-right">visit component &rarr;</small></a></h4>
@@ -8,6 +8,6 @@
           {{{page}}}
         </div>
       </section>
-    {{/include}}
+    {{/process}}
   {{/isnt}}
 {{/each}}

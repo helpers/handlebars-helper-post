@@ -106,6 +106,18 @@ module.exports = function(grunt) {
         src: ['test/fixtures/foo.hbs'],
         dest: 'test/actual/sort_by_title/'
       },
+      reverse_title: {
+        options: {
+          posts: {
+            sep: '<!-- Post -->\n',
+            cwd: 'test/fixtures/foo',
+            sortBy: 'title',
+            sortOrder: 'desc'
+          }
+        },
+        src: ['test/fixtures/foo.hbs'],
+        dest: 'test/actual/reverse_order/'
+      },
       sort_by_foo: {
         options: {
           posts: {
@@ -116,18 +128,6 @@ module.exports = function(grunt) {
         },
         src: ['test/fixtures/foo.hbs'],
         dest: 'test/actual/sort_by_foo/'
-      },
-      reverse_order: {
-        options: {
-          posts: {
-            sep: '<!-- Post -->\n',
-            cwd: 'test/fixtures/foo',
-            sortBy: 'title',
-            sortOrder: 'foo'
-          }
-        },
-        src: ['test/fixtures/foo.hbs'],
-        dest: 'test/actual/reverse_order/'
       },
 
       // The following targets all use the same data file,

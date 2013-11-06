@@ -11,11 +11,10 @@ var path = require('path');
 var fs   = require('fs');
 
 // node_modules
-var _       = require('lodash');
-var glob    = require('globule');
-var hljs    = require('highlight.js');
-var marked  = require('marked');
-var yfm     = require('assemble-yaml');
+var yfm    = require('assemble-yaml');
+var hljs   = require('highlight.js');
+var marked = require('marked');
+var _      = require('lodash');
 
 
 // Export helpers
@@ -23,10 +22,9 @@ module.exports.register = function (Handlebars, options, params) {
 
   'use strict';
 
-  var opts     = options;
+  var opts     = options || {};
   var grunt    = params.grunt;
   var assemble = params.assemble;
-
 
   /**
    * {{post}}
@@ -46,7 +44,7 @@ module.exports.register = function (Handlebars, options, params) {
       sortBy: 'basename',
       sortOrder: 'asc',
       sep: '<!-- Post -->\n',
-      glob: {} // see: https://github.com/cowboy/node-globule for all options
+      glob: {}
     };
 
     marked.setOptions(_.extend({}, markedOptions, opts.markdown));
@@ -54,7 +52,7 @@ module.exports.register = function (Handlebars, options, params) {
     // Extend default options with options from assemble.options.posts
     // and the helper's options hash.
     options = _.extend({}, defaults, opts.posts, options, options.hash);
-    grunt.log.ok("options:".yellow, options);
+    grunt.verbose.ok("options:".yellow, options);
 
     /**
      * Accepts two objects (a, b),
@@ -82,14 +80,15 @@ module.exports.register = function (Handlebars, options, params) {
       return result;
     };
 
-    var index = 0;
-    compare_fn = ((compareFn || compare_fn) || options.compare);
-
     // Join path to 'cwd' if defined in the helper's options
     var cwd = path.join.bind(null, options.cwd);
     grunt.verbose.ok("options:".yellow, options);
 
-    var html = glob.find(cwd(src), options.glob).map(function (filepath) {
+    // Sorting
+    var index = 0;
+    compare_fn = ((compareFn || compare_fn) || options.compare);
+
+    var html = grunt.file.expand(options.glob, cwd(src)).map(function (filepath) {
       var localContext = yfm.extract(filepath).context;
       var context = processContext(grunt, localContext);
       var content = yfm.extract(filepath).content;

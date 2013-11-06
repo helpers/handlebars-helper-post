@@ -23,8 +23,6 @@
   "main": "index.js",
   "dependencies": {
     "assemble-yaml": "~0.2.0",
-    "globule": "~0.1.0",
-    "handlebars": "~1.0.12",
     "highlight.js": "~7.3.0",
     "lodash": "~2.2.1",
     "marked": "~0.2.9",
